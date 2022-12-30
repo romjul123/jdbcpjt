@@ -1,6 +1,7 @@
 package com.kh.jdbc.day02.member.model.vo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Member {
 	private String memberId;
@@ -12,14 +13,14 @@ public class Member {
 	private String memberPhone;
 	private String memberAddress;
 	private String memberHobby;
-	private Date memberDate;
+	private Timestamp memberDate;
 	
 	public Member() {
 		
 	}
 	
 	public Member(String memberId, String memberPwd, String memberName, String memberGender, int memberAge,
-			String memberEmail, String memberPhone, String memberAddress, String memberHobby, Date memberDate) {
+			String memberEmail, String memberPhone, String memberAddress, String memberHobby) {
 		super();
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
@@ -30,7 +31,6 @@ public class Member {
 		this.memberPhone = memberPhone;
 		this.memberAddress = memberAddress;
 		this.memberHobby = memberHobby;
-		this.memberDate = memberDate;
 	}
 
 
@@ -124,12 +124,12 @@ public class Member {
 	}
 
 
-	public Date getMemberDate() {
+	public Timestamp getMemberDate() {
 		return memberDate;
 	}
 
 
-	public void setMemberDate(Date memberDate) {
+	public void setMemberDate(Timestamp memberDate) {
 		this.memberDate = memberDate;
 	}
 
