@@ -28,7 +28,6 @@ public class MemberView {
 		System.out.println("== === === 전체 회원 조회 === === ===");
 		for(Member mOne : mList) {
 			System.out.print("아이디 : " + mOne.getMemberId());
-			System.out.print(", 비밀번호 : " + mOne.getMemberPwd());
 			System.out.print(", 이름 : " + mOne.getMemberName());
 			System.out.print(", 성별 : " + mOne.getMemberGender());
 			System.out.print(", 나이 : " + mOne.getMemberAge());
@@ -41,9 +40,8 @@ public class MemberView {
 	}
 	
 	public void showOne(Member member) {
-		System.out.println(member.toString());
+		System.out.println("=== === "+member.getMemberId()+" 회원 조회 결과 === ===");
 		System.out.print("아이디 : " + member.getMemberId());
-		System.out.print(", 비밀번호 : " + member.getMemberPwd());
 		System.out.print(", 이름 : " + member.getMemberName());
 		System.out.print(", 성별 : " + member.getMemberGender());
 		System.out.print(", 나이 : " + member.getMemberAge());
@@ -95,7 +93,7 @@ public class MemberView {
 	
 	public String inputMemberId(String message) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println(message + "할 아이디 입력 : ");
+		System.out.print(message + "할 아이디 입력 : ");
 		String memberId = sc.next();
 		return memberId;
 	}
@@ -103,29 +101,26 @@ public class MemberView {
 	
 	public String inputMemberName(String message) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println(message + "할 이름 입력 : ");
+		System.out.print(message + "할 이름 입력 : ");
 		String memberName = sc.next();
 		return memberName;
 	}
 	
-	public Member modifyMember(Member member) {
+	public Member modifyMember(String memberId) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("수정할 비밀번호 입력 : ");
-		String memberPwd = sc.next();
+		Member member = new Member();
+		member.setMemberId(memberId);     // 중요!
+		System.out.print("수정할 비밀번호 입력 : ");
+		member.setMemberPwd(sc.next());
 		System.out.println("수정할 이메일 입력 : ");
-		String memberEmail = sc.next();
+		member.setMemberEmail(sc.next());
 		System.out.println("수정할 전화번호 입력 : ");
-		String memberPhone = sc.next();
+		member.setMemberPhone(sc.next());
 		System.out.println("수정할 주소 입력 : ");
 		sc.nextLine();
-		String memberAddress = sc.nextLine();
+		member.setMemberAddress(sc.nextLine());
 		System.out.println("수정할 취미 입력 : ");
-		String memberHobby = sc.next();
-		member.setMemberPwd(memberPwd);
-		member.setMemberEmail(memberEmail);
-		member.setMemberPhone(memberPhone);
-		member.setMemberAddress(memberAddress);
-		member.setMemberHobby(memberHobby);
+		member.setMemberHobby(sc.next());
 		return member;
 	}
 	

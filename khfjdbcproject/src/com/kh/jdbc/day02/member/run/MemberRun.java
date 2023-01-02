@@ -38,17 +38,17 @@ public class MemberRun {
 				if(member != null) {
 					mView.showOne(member);
 				}else {
-					mView.displayError("일치하는 데이터가 없습니다.");
+					mView.displayError("일치하는 회원이 존재하지 않습니다.");
 				}
 				break;
 			case 3 : 
 				// 이름으로 조회
 				memberName = mView.inputMemberName("검색");
-				mList = mCon.printAllByName(memberName);
-				if(!mList.isEmpty()) {
+				mList = mCon.printMembersByName(memberName);
+				if(mList.size() > 0) {
 					mView.showAll(mList);
 				}else {
-					mView.displayError("일치하는 데이터가 없습니다.");
+					mView.displayError("일치하는 회원이 존재하지 않습니다.");
 				}
 				break;
 			case 4 : 
@@ -64,14 +64,19 @@ public class MemberRun {
 				break;
 			case 5 : 
 				// 정보 수정
+				// 아이디를 입력받고
 				memberId = mView.inputMemberId("수정");
+				// 데이터가 존재하면
 				member = mCon.printOneById(memberId);
 				if(member != null) {
-					member = mView.modifyMember(member);
-					mCon.modifyMember(member);
-				}else {
-					mView.displayError("일치하는 학생이 없습니다.");
-				}
+					// 수정할 데이터 입력 받기
+					member = mView.modifyMember(memberId);
+					// 입력받은 데이터로 수정하기
+					result = mCon.modifyMemberInfo(member);
+				    	mView.displayScuccess("수정 성공");
+				    }else {
+				    	mView.displayError("수정이 되지 않았습니다.");
+				    }
 				break;
 			case 6 : 
 				// 회원 탈퇴
