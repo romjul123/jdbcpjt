@@ -73,13 +73,17 @@ public class MemberRun {
 					member = mView.modifyMember(memberId);
 					// 입력받은 데이터로 수정하기
 					result = mCon.modifyMemberInfo(member);
+					if(result > 0) {
 				    	mView.displayScuccess("수정 성공");
 				    }else {
 				    	mView.displayError("수정이 되지 않았습니다.");
 				    }
+				}else {
+					mView.displayError("일치하는 회원이 존재하지 않습니다.");
+				}
 				break;
 			case 6 : 
-				// 회원 탈퇴
+				// 회원 삭제
 				memberId = mView.inputMemberId("삭제");
 				result = mCon.removeMember(memberId);
 				if (result > 0) {
