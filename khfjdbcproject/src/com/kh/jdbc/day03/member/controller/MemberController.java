@@ -22,6 +22,11 @@ public class MemberController {
 		Member member = mService.selectOneById(memberId);
 		return member;
 	}
+	
+	public List<Member> printMembersByName(String memberName){
+		List<Member> mList = mService.selectOneByName(memberName);
+		return mList;
+	}
 
 	public int registerMember(Member member) {
 		int result = mService.insertMember(member);
@@ -30,6 +35,11 @@ public class MemberController {
 	
 	public int modifyMember(Member member) {
 		int result = mService.updateMember(member);
+		return result;
+	}
+	
+	public int removeMember(String memberId) {
+		int result = mService.deleteMember(memberId);
 		return result;
 	}
 }
